@@ -43,7 +43,7 @@ export class LogInComponent implements OnInit {
     this.message = '';
     this.isRegister = true;
   }
-
+  
   register(): void {
     this.message = '';
     if (this.name === '' || this.email === '' || this.password === '') {
