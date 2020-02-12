@@ -1,20 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { IUser } from '../user';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.css']
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
 
-export class LogInComponent implements OnInit {
+export class AuthComponent implements OnInit {
   name = '';
   email = '';
   password = '';
   user: IUser;
   isRegister = false;
   message = '';
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    if (this.authService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
+  }
+
 
   ngOnInit(): void {}
 
