@@ -39,7 +39,7 @@ export class LogInComponent implements OnInit {
     this.message = "";
     this.isRegisterd = false;
   }
-  registarUser(): void {
+  registerUser(): void {
     this.message = "";
     if (this.nameR == "" || this.emailR == "" || this.passwordR == "") {
       this.message = "Please fill out all the above information to registar";
@@ -53,7 +53,7 @@ export class LogInComponent implements OnInit {
       this.emailR = "";
       this.nameR = "";
       this.passwordR = "";
-      this.isRegisterd = true;
+      this.message = "You have suucessfully registered";
     }
   }
   logInBack(): void {
