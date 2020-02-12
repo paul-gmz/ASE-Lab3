@@ -8,19 +8,22 @@ import { IUser } from '../user';
 })
 
 export class LogInComponent implements OnInit {
+  name = '';
   email = '';
   password = '';
-  emailR = '';
-  passwordR = '';
-  nameR = '';
   user: IUser;
-  isRegistered = true;
+  isRegister = false;
   message = '';
   constructor() {}
 
   ngOnInit(): void {}
 
-  logIn(): void {
+  displaySignIn(): void {
+    this.message = '';
+    this.isRegister = false;
+  }
+
+  signIn(): void {
     this.message = '';
     if (this.email === '' || this.password === '') {
       this.message = 'Please fill out your email and password';
@@ -36,31 +39,26 @@ export class LogInComponent implements OnInit {
     }
   }
 
-  signUp(): void {
+  displayRegister(): void {
     this.message = '';
-    this.isRegistered = false;
+    this.isRegister = true;
   }
 
-  registerUser(): void {
+  register(): void {
     this.message = '';
-    if (this.nameR === '' || this.emailR === '' || this.passwordR === '') {
-      this.message = 'Please fill out all the above information to registar';
+    if (this.name === '' || this.email === '' || this.password === '') {
+      this.message = 'Please fill out all the above information to register';
     } else {
       this.user = {
-        name: this.nameR,
-        email: this.emailR,
-        password: this.passwordR
+        name: this.name,
+        email: this.email,
+        password: this.password
       };
-      localStorage.setItem(this.emailR, JSON.stringify(this.user));
-      this.emailR = '';
-      this.nameR = '';
-      this.passwordR = '';
-      this.isRegistered = true;
+      localStorage.setItem(this.email, JSON.stringify(this.user));
+      this.email = '';
+      this.name = '';
+      this.password = '';
+      this.isRegister = false;
     }
-  }
-
-  logInBack(): void {
-    this.message = '';
-    this.isRegistered = true;
   }
 }
