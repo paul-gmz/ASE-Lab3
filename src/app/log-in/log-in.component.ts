@@ -58,7 +58,7 @@ export class LogInComponent implements OnInit {
       this.email = '';
       this.name = '';
       this.password = '';
-      this.isRegister = false;
+      this.message = 'You have successfully registered';
     }
   }
 }
