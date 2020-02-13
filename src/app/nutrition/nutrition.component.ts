@@ -23,18 +23,22 @@ export class NutritionComponent implements OnInit {
   ngOnInit(): void { }
 
   search() {
+    if (this.food.trim() === '') {
+      alert('Please enter a food to search.');
+      return;
+    }
     this.httpService.getNutrition(this.food).subscribe((data) => {
       console.log(data)
       if (data['hits'].length === 0) {
         this.showNutrition = false;
         alert('No results found for ' + this.food);
       } else {
-        console.log(data['hits'][0].fields.calories + ' ' + data['hits'][0].fields.nf_serving_weight_gram);
+        console.log(data['hits'][0].fields.nf_calories + ' ' + data['hits'][0].fields.nf_serving_weight_gram);
         this.nutrition = {name: data['hits'][0].fields.item_name,
-          calories: (data['hits'][0].fields.calories === undefined ? 'n/a' : data['hits'][0].fields.calories + ' cal'),
-          serving: (data['hits'][0].fields.nf_serving_weight_grams === null ? 'n/a'
+          calories: (data['hits'][0].fields.nf_calories === undefined ? '--' : data['hits'][0].fields.nf_calories + ' cal'),
+          serving: (data['hits'][0].fields.nf_serving_weight_grams === null ? '--'
             : data['hits'][0].fields.nf_serving_weight_grams + ' g')};
-        // example: chick
+        // example: chk
         this.showNutrition = true;
         this.food = '';
       }
