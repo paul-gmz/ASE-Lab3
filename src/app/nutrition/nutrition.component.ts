@@ -29,10 +29,11 @@ export class NutritionComponent implements OnInit {
         this.showNutrition = false;
         alert('No results found for ' + this.food);
       } else {
+        console.log(data['hits'][0].fields.calories + ' ' + data['hits'][0].fields.nf_serving_weight_gram);
         this.nutrition = {name: data['hits'][0].fields.item_name,
-          calories: data['hits'][0].fields.nf_calories,
-          serving: (data['hits'][0].fields.nf_serving_weight_grams === null ?
-            data['hits'][0].fields.nf_serving_weight_grams : 'n/a')};
+          calories: (data['hits'][0].fields.calories === undefined ? 'n/a' : data['hits'][0].fields.calories + 'cal'),
+          serving: (data['hits'][0].fields.nf_serving_weight_grams === null ? 'n/a'
+            : data['hits'][0].fields.nf_serving_weight_grams + 'g')};
         // example: chick
         this.showNutrition = true;
         this.food = '';
