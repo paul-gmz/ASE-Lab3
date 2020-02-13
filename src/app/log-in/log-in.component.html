@@ -1,11 +1,13 @@
-<app-top-navbar></app-top-navbar>
 <div class="container-fluid">
   <div class="row pt-5">
     <div class="col-sm-8">
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <img src="../../assets/images/healthy-food-heart.jpg"
-            class="img-fluid fit-image" alt="Responsive image"/>
+          <img
+            src="../../assets/images/healthy-food-heart.jpg"
+            class="img-fluid fit-image"
+            alt="Responsive image"
+          />
         </div>
       </div>
     </div>
@@ -13,10 +15,9 @@
     <div class="col-sm-4">
       <div class="card bg-light mb-3" style="max-width: 30rem;">
         <div class="card-header">
-          <h4>{{isRegister ? 'Register' : 'Sign In'}}</h4>
+          <h4>{{ isRegister ? "Register" : "Sign In" }}</h4>
         </div>
         <div class="card-body">
-
           <div class="row mt-1" *ngIf="isRegister">
             <div class="col-sm">
               <label>Name: </label>
@@ -56,7 +57,12 @@
                 Sign In
               </button>
 
-              <button (click)="displayRegister()" type="button" class="btn btn-primary" style="margin-left: 2em;">
+              <button
+                (click)="displayRegister()"
+                type="button"
+                class="btn btn-primary"
+                style="margin-left: 2em;"
+              >
                 Register
               </button>
             </div>
@@ -64,11 +70,20 @@
 
           <div *ngIf="isRegister" class="row mt-4">
             <div class="col-sm">
-              <button (click)="register()" type="button" class="btn btn-primary">
+              <button
+                (click)="register()"
+                type="button"
+                class="btn btn-primary"
+              >
                 Register
               </button>
 
-              <button (click)="displaySignIn()" type="button" class="btn btn-primary" style="margin-left: 2em;">
+              <button
+                (click)="displaySignIn()"
+                type="button"
+                class="btn btn-primary"
+                style="margin-left: 2em;"
+              >
                 Sign In
               </button>
             </div>
