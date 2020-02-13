@@ -33,6 +33,18 @@
         </li>
       </ul>
     </div>
+    <span class="navbar-item" *ngIf="isAuthenticated">
+      <div>
+        <span class="welcome"> Welcome {{ user }}</span>
+        <button
+          (click)="logOut()"
+          type="button"
+          class="btn btn-outline-info welcome"
+        >
+          Log Out
+        </button>
+      </div>
+    </span>
   </nav>
 </header>
 

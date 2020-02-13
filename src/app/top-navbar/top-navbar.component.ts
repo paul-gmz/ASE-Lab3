@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-top-navbar",
@@ -8,8 +9,9 @@ import { Component, OnInit, HostListener } from "@angular/core";
 export class TopNavbarComponent implements OnInit {
   title: string = "Nutrition Facts";
   isAuthenticated: boolean = false;
+  user: string = "";
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
@@ -20,6 +22,15 @@ export class TopNavbarComponent implements OnInit {
 
     if (authenticatedUser !== null && authenticatedUser.isLoggedIn) {
       this.isAuthenticated = true;
+      let userEmail = authenticatedUser.email;
+      this.user = JSON.parse(localStorage.getItem(userEmail)).name;
     }
+  }
+
+  logOut(): void {
+    sessionStorage.clear();
+    this.isAuthenticated = false;
+    this.user = "";
+    this.router.navigate(["/signin"]);
   }
 }
