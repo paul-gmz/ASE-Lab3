@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { IUser } from '../user';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-log-in',
+  selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
@@ -16,16 +15,12 @@ export class AuthComponent implements OnInit {
   user: IUser;
   isRegister = false;
   message = '';
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthService
-  ) {
-    if (this.authService.currentUserValue) {
+
+  constructor( private route: ActivatedRoute, private router: Router ) {
+    if (localStorage.getItem('user') !== null) {
       this.router.navigate(['/']);
     }
   }
-
 
   ngOnInit(): void {}
 
@@ -38,14 +33,20 @@ export class AuthComponent implements OnInit {
     this.message = '';
     if (this.email === '' || this.password === '') {
       this.message = 'Please fill out your email and password';
+
     } else {
       this.user = JSON.parse(localStorage.getItem(this.email));
+
       if (this.user == null) {
         this.message = 'Invalid credentials';
+
       } else if (this.user.password !== this.password) {
         this.message = 'Invalid credentials';
+
       } else {
-        this.message = 'You are good';
+        // save current user and redirects
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this.router.navigate(['/']);
       }
     }
   }
@@ -54,22 +55,23 @@ export class AuthComponent implements OnInit {
     this.message = '';
     this.isRegister = true;
   }
-  
+
   register(): void {
     this.message = '';
     if (this.name === '' || this.email === '' || this.password === '') {
       this.message = 'Please fill out all the above information to register';
     } else {
+      // creates new user in local storage
       this.user = {
         name: this.name,
         email: this.email,
         password: this.password
       };
       localStorage.setItem(this.email, JSON.stringify(this.user));
-      this.email = '';
-      this.name = '';
-      this.password = '';
-      this.message = 'You have successfully registered';
+
+      // save current user and redirect
+      localStorage.setItem('user', JSON.stringify(this.user));
+      this.router.navigate(['/']);
     }
   }
 }
