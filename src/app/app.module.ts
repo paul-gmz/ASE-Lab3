@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { TopNavbarComponent } from "./top-navbar/top-navbar.component";
@@ -10,7 +11,13 @@ import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [TopNavbarComponent, LogInComponent, NutritionComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, RouterModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    RouterModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [TopNavbarComponent]
 })
