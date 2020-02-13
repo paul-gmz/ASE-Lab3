@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IUser} from '../user';
+import {User} from '../user';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class TopNavComponent {
 
   title = 'Nutrition Facts';
-  user: IUser = null;
+  user: User = null;
 
   constructor( private router: Router ) {
     this.user = JSON.parse(localStorage.getItem('user'));

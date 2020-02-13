@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from '../user';
+import { User } from '../user';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class AuthComponent implements OnInit {
   name = '';
   email = '';
   password = '';
-  user: IUser;
+  user: User;
   isRegister = false;
   message = '';
 
@@ -32,7 +32,7 @@ export class AuthComponent implements OnInit {
   signIn(): void {
     this.message = '';
     if (this.email === '' || this.password === '') {
-      this.message = 'Please fill out your email and password';
+      this.message = 'Please fill out all the fields';
 
     } else {
       this.user = JSON.parse(localStorage.getItem(this.email));
@@ -59,7 +59,7 @@ export class AuthComponent implements OnInit {
   register(): void {
     this.message = '';
     if (this.name === '' || this.email === '' || this.password === '') {
-      this.message = 'Please fill out all the above information to register';
+      this.message = 'Please fill out all the fields';
     } else {
       // creates new user in local storage
       this.user = {

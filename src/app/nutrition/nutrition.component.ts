@@ -31,9 +31,9 @@ export class NutritionComponent implements OnInit {
       } else {
         console.log(data['hits'][0].fields.calories + ' ' + data['hits'][0].fields.nf_serving_weight_gram);
         this.nutrition = {name: data['hits'][0].fields.item_name,
-          calories: (data['hits'][0].fields.calories === undefined ? 'n/a' : data['hits'][0].fields.calories + 'cal'),
+          calories: (data['hits'][0].fields.calories === undefined ? 'n/a' : data['hits'][0].fields.calories + ' cal'),
           serving: (data['hits'][0].fields.nf_serving_weight_grams === null ? 'n/a'
-            : data['hits'][0].fields.nf_serving_weight_grams + 'g')};
+            : data['hits'][0].fields.nf_serving_weight_grams + ' g')};
         // example: chick
         this.showNutrition = true;
         this.food = '';
