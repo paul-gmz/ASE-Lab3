@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { HttpService } from "./http-service";
 
 interface Nutrition {
@@ -13,14 +13,12 @@ interface Nutrition {
   styleUrls: ["./nutrition.component.css"]
 })
 
-export class NutritionComponent implements OnInit {
+export class NutritionComponent {
   food = "";
   nutrition: Nutrition;
   showNutrition = false;
 
   constructor(private httpService: HttpService) {}
-
-  ngOnInit(): void {}
 
   search() {
     if (this.food.trim() === "") {
@@ -30,9 +28,7 @@ export class NutritionComponent implements OnInit {
 
     this.httpService.getNutrition(this.food).subscribe(data => {
       if (data["hits"].length === 0) {
-        this.showNutrition = false;
-        // wait for 10ms otherwise alter will appear before previous result is cleared
-        setTimeout(() => { alert("No results found for " + this.food); }, 10);
+        alert("No results found for " + this.food);
 
       } else {
         // replace null and undefined values
