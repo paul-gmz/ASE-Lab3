@@ -31,7 +31,8 @@ export class NutritionComponent implements OnInit {
     this.httpService.getNutrition(this.food).subscribe(data => {
       if (data["hits"].length === 0) {
         this.showNutrition = false;
-        alert("No results found for " + this.food);
+        // wait for 10ms otherwise alter will appear before previous result is cleared
+        setTimeout(() => { alert("No results found for " + this.food); }, 10);
 
       } else {
         // replace null and undefined values
