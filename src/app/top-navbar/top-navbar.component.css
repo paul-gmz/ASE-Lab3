@@ -1,5 +1,7 @@
-.welcome {
-  color: white;
-  font-weight: bold;
-  margin-right: 2em;
+.hover:hover {
+  cursor: pointer;
+}
+
+.disabled:hover {
+  /*override*/
 }

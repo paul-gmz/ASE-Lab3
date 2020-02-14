@@ -5,3 +5,13 @@
 .td-left {
   padding-left: 40px;
 }
+
+.min-30 {
+  min-height: 30em;
+}
+
+.header-text {
+  color: #e9ecef;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
