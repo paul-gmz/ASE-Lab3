@@ -11,6 +11,7 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: "root"
 })
+
 export class AuthenticationGuard implements CanActivate {
   constructor(private router: Router) {}
 
@@ -22,7 +23,7 @@ export class AuthenticationGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let authenticatedUser = JSON.parse(
+    const authenticatedUser = JSON.parse(
       sessionStorage.getItem("isAuthenticated")
     );
     if (authenticatedUser !== null && authenticatedUser.isLoggedIn) {

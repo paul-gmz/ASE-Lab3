@@ -1,50 +1,20 @@
 <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow"
-  >
-    <a class="navbar-brand" [routerLink]="['/nutrition']">
-      <img
-        src="../../assets/images/cal.png"
-        width="30"
-        height="30"
-        class="d-inline-block align-top"
-        alt=""
-      />
-      {{ title }}
+  <nav class="justify-content-center navbar navbar-dark navbar-expand-md bg-faded bg-dark">
+    <a class="navbar-brand d-flex w-50 mr-auto" routerLink="/" style="color: #e9ecef;">
+      <img src="../../assets/images/cal.png" width="30" height="30" class="d-inline-block align-top"
+           alt="{{title}}" style="margin-right: 10px"/>
+      {{title}}
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target=".navbar-collapse"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-      class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-      *ngIf="isAuthenticated"
-    >
-      <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/nutrition']">Nutrition</a>
-        </li>
-      </ul>
-    </div>
-    <span class="navbar-item" *ngIf="isAuthenticated">
-      <div>
-        <span class="welcome"> Welcome {{ user }}</span>
-        <button
-          (click)="logOut()"
-          type="button"
-          class="btn btn-outline-info welcome"
-        >
-          Log Out
-        </button>
-      </div>
-    </span>
+
+    <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+      <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link disabled welcome" style="color: #e9ecef; margin-right: 10px;">Welcome, {{user}}!</a>
+      </li>
+
+      <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link hover" style="text-decoration: underline; color: #e9ecef;" (click)="logOut()">Sign Out</a>
+      </li>
+    </ul>
   </nav>
 </header>
 

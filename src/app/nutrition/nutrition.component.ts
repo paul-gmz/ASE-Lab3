@@ -12,6 +12,7 @@ interface Nutrition {
   templateUrl: "./nutrition.component.html",
   styleUrls: ["./nutrition.component.css"]
 })
+
 export class NutritionComponent implements OnInit {
   food = "";
   nutrition: Nutrition;
@@ -26,17 +27,14 @@ export class NutritionComponent implements OnInit {
       alert("Please enter a food to search.");
       return;
     }
+
     this.httpService.getNutrition(this.food).subscribe(data => {
-      console.log(data);
       if (data["hits"].length === 0) {
         this.showNutrition = false;
         alert("No results found for " + this.food);
+
       } else {
-        console.log(
-          data["hits"][0].fields.nf_calories +
-            " " +
-            data["hits"][0].fields.nf_serving_weight_gram
-        );
+        // replace null and undefined values
         this.nutrition = {
           name: data["hits"][0].fields.item_name,
           calories:
@@ -48,7 +46,7 @@ export class NutritionComponent implements OnInit {
               ? "--"
               : data["hits"][0].fields.nf_serving_weight_grams + " g"
         };
-        // example: chk
+        // example where serving size is null: chk
         this.showNutrition = true;
         this.food = "";
       }

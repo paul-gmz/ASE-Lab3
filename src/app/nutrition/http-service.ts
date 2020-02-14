@@ -12,6 +12,7 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   public getNutrition(searchInput) {
+    // return data from nutrition ix api call
     return this.http.get(
       `${this.NUTRITION_URL}${searchInput}?results=0:1&fields=*&appId=${this.APP_ID}&appKey=${this.API_KEY}`
     );

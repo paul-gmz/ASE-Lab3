@@ -38,7 +38,7 @@ export class LogInComponent implements OnInit {
           "isAuthenticated",
           JSON.stringify({ email: this.email, isLoggedIn: true })
         );
-        this.router.navigate(["/nutrition"]);
+        this.router.navigate([""]);
       }
     }
   }

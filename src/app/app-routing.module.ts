@@ -6,7 +6,7 @@ import { AuthenticationGuard } from "./authentication.guard";
 
 const routes: Routes = [
   {
-    path: "nutrition",
+    path: "",
     canActivate: [AuthenticationGuard],
     component: NutritionComponent
   },
